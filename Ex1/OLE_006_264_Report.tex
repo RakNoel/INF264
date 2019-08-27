@@ -191,7 +191,84 @@
 	Now given the matrix the determinant does get simple at both $b$ and $c$ is zero, we're left with the equation $(\lambda - 1)(\lambda - 2)(\lambda - 3)=0$ giving the possible solutions of $(\lambda = 1 \vee \lambda = 2 \vee \lambda = 3)$
 	
 	\item
+	Given the matrix $D$ and the lambdas from above, we should be able to find an associated eigenvector to each of the corresponding values.\\
 	
+	\begin{minipage}[t]{0.3\textwidth}
+	$D - {\lambda}_1 I$
+	\[
+		\begin{bmatrix}
+		0 & 0 & 0 \\
+		1 & 1 & 0 \\
+		2 & 0 & 2
+		\end{bmatrix}
+	\]
+	\[
+		\begin{bmatrix}
+		1 & -1 & 2 \\
+		1 & 1 & 0 \\
+		0 & 0 & 0
+		\end{bmatrix}
+	\]
+		\[
+		\begin{bmatrix}
+		1 & 1 & 0 \\
+		0 & 1 & -1 \\
+		0 & 0 & 0
+		\end{bmatrix}
+	\]
+	\end{minipage} \quad \vline \quad \begin{minipage}[t]{0.3\textwidth}
+	$D - {\lambda}_2 I$
+	\[
+		\begin{bmatrix}
+		-1 & 0 & 0 \\
+		1 & 0 & 0 \\
+		2 & 0 & 1
+		\end{bmatrix}
+	\]
+	\[
+		\begin{bmatrix}
+		1 & 0 & 1 \\
+		0 & 0 & 1 \\
+		0 & 0 & 0
+		\end{bmatrix}
+	\]
+	\end{minipage} \quad \vline \quad \begin{minipage}[t]{0.3\textwidth}
+	$D - {\lambda}_3 I$	
+	\[
+		\begin{bmatrix}
+		-2 & 0 & 0 \\
+		1 & -1 & 0 \\
+		2 & 0 & 0
+		\end{bmatrix}
+	\]
+	\[
+		\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 0
+		\end{bmatrix}
+	\]
+	\end{minipage}
+	
+	\begin{minipage}[t]{0.3\textwidth}	
+	\[
+		E_{\lambda = 1} = \begin{bmatrix}
+		-1 \\ 1 \\ 1
+		\end{bmatrix}
+	\]
+	\end{minipage} \quad \vline \quad \begin{minipage}[t]{0.3\textwidth}	
+	\[
+		E_{\lambda = 2} = \begin{bmatrix}
+		0 \\ 1 \\ 0
+		\end{bmatrix}
+	\]
+	\end{minipage} \quad \vline \quad \begin{minipage}[t]{0.3\textwidth}	
+	\[
+		E_{\lambda = 3} = \begin{bmatrix}
+		0 \\ 0 \\ 1
+		\end{bmatrix}
+	\]
+	\end{minipage}
 	
     \end{enumerate}
 	}    
