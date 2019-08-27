@@ -61,7 +61,78 @@
 	\mysection{Mathematical warm up}
 	\mysubsection{Matrices}
 	{
-	
+	\begin{enumerate}
+	\item
+	Following that $ad - bc \neq 0 $ we know that these matrices are invertible as both $1*2-1*-1\neq0$ and $2*-2-1*1\neq0$ holds true.
+	\[
+		A^{-1} = \begin{bmatrix}
+		1 & -1 \\
+		1 & 2
+		\end{bmatrix}^{-1} = \frac{1}{3} \begin{bmatrix}
+		2 & 1 \\
+		-1 & 1
+		\end{bmatrix} = \begin{bmatrix}
+		\frac{2}{3} & \frac{1}{3} \\
+		- \frac{1}{3} & \frac{1}{3}
+		\end{bmatrix}
+	\]
+	\[
+		B^{-1} = \begin{bmatrix}
+		2 & 1 \\
+		1 & -2
+		\end{bmatrix}^{-1} = -\frac{1}{5} \begin{bmatrix}
+		-2 & -1 \\
+		-1 & 2
+		\end{bmatrix}^{-1} = \begin{bmatrix}
+		\frac{2}{5} & \frac{1}{5} \\
+		\frac{1}{5} & -\frac{2}{5}
+		\end{bmatrix}
+	\]
+	\item
+	\[
+		AB = \begin{bmatrix}
+		(1*2)+(-1*1) & (1*1)+(-1*-2) \\
+		(1*2)+(2*1) & (1*1)+(2*-2)
+		\end{bmatrix} = \begin{bmatrix}
+		1 & 3 \\
+		4 & -3
+		\end{bmatrix}
+	\]\\
+	Again, $AB$ is inversible due to $(1*-3)-(3*4)=-15 \neq 0$
+	\[
+		(AB)^{-1} = \begin{bmatrix}
+		1 & 3 \\
+		4 & -3
+		\end{bmatrix}^{-1} = \frac{1}{15} \begin{bmatrix}
+		3 & 3 \\
+		4 & -1
+		\end{bmatrix} = \begin{bmatrix}
+		\frac{1}{5} & \frac{1}{5} \\
+		\frac{4}{15} & -\frac{1}{15}
+		\end{bmatrix}
+	\]
+	\[
+		B^{-1}A^{-1} = \begin{bmatrix}
+		\frac{2}{5} & \frac{1}{5} \\
+		\frac{1}{5} & -\frac{2}{5}
+		\end{bmatrix}\begin{bmatrix}
+		\frac{2}{3} & \frac{1}{3} \\
+		- \frac{1}{3} & \frac{1}{3}
+		\end{bmatrix} = \begin{bmatrix}
+		(\frac{2}{5} * \frac{2}{3}) + (\frac{1}{5} * -\frac{1}{3}) & (\frac{2}{5} * \frac{1}{3}) + (\frac{1}{5} * \frac{1}{3}) \\
+		(\frac{1}{5} * \frac{2}{3}) + (-\frac{2}{5} * -\frac{1}{3}) & (\frac{1}{5} * \frac{1}{3}) + (-\frac{2}{5} * \frac{1}{3})
+		\end{bmatrix} = \begin{bmatrix}
+		\frac{1}{5} & \frac{1}{5} \\
+		\frac{4}{15} & -\frac{1}{15}
+		\end{bmatrix}
+	\]
+	\[
+		(AB)^{-1} = B^{-1}A^{-1} = \begin{bmatrix}
+		\frac{1}{5} & \frac{1}{5} \\
+		\frac{4}{15} & -\frac{1}{15}
+		\end{bmatrix}
+	\]
+    \end{enumerate}
 	}    
     
     
