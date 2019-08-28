@@ -271,9 +271,10 @@
 	\end{minipage}
 	
     \end{enumerate}
-    
+    }
     \newpage
     \mysubsection{Calculus}
+    {
     \begin{enumerate}
     \item
     Finding the partial derivatives we simply remove the "unknown" variable and find the derivative.
@@ -320,9 +321,10 @@
 	We now have two linear functions with a null point, by that we can conclude that our function does hold a local minimum point there. Now since we have two functions of second degree they both only hold a single turning point which means that our function cannot hold more than one minimal/maximal point, and therefore the point has to be the global minimum.
 	
     \end{enumerate}
-    
+    }
     \newpage
     \mysubsection{Probabilities}
+    {
     \begin{enumerate}
     \item
     Choosing random students
@@ -339,6 +341,51 @@
     \end{enumerate}
 	}    
     
+    \newpage
+    \mysection{Machine learning problems}
+    \mysubsection{Rema1000}
+    The task hereby required is to create a system which will assist in creating a dynamic warehouse based on the location of the store. e.g. a store close to known student housings could have a greater selection of fast foot and cheaper alternatives like "first price", while a suburban store could hold more baby products. If we expand even more on this idea we could also make a store "seasonal" by stocking up on ice-cream before 17. may, and alcohol before special events like new years eve. We could even predict which stores should stock up most on which Christmas foods, as some regions could prefer turkey over pork ribs. And then even assist in ordering by warning of products going "out of fashion", if a product is spoiling faster than being sold according to its price, or by warning about "unknown" seasons like the yearly Bonus-payout in the company across the street in February or cleaning supplies in November as that is when most students drop out.
+    \\\\  
+    Trying to simplify the stocking of the store, we will need to remove unnecessary items, and to do that we need to know which items are unnecessary. We could potentially count the amount of sales per item, and the date which they are sold. We could also count the amount of wastage with date for each product, and new stockings as fresh items arrive. If we can log the entire sale made as one we could also try grouping items together and place them efficiently as to guide customers on better routes trough the store to increase revenue.
+    \\\\
+    Deciding on which products to add to a NEW store is a slightly different problem as we cannot collect live data and adapt. Instead we will need to create the data from other stores. This in turn means that we could start collecting the data above from all other stores and give the stores labels depending on which people we think shop there. Even better would be to ask each customer to register and tell us themselves. Then we can enter the labels which we think will be relevant and get which products we can expect to sell the most of.
+    \\\\
+    Starting small we need to collect data on all the sales done in all stores, and to which customer the sale was made. Then we can measure the accuracy of the predictions by comparing predictions made on each transaction with the known customer labels. Once we have a steady result we can create a new system on the same dataset made to predict stock items based on our assumed labels in the new location.
+    \\\\
+    \begin{itemize}
+    \item \textbf{T(Task):} Look at customers and transactions to assume which type of customer will buy which items. Then using the same dataset make reversed assumptions.
+    \item \textbf{P(Performance):} Could be measured on the accuracy of all assumptions on customer labels made.
+    \item \textbf{E(Experience):} The data needed to be collected here is as many transactions and the correct customer label as possible.
+    \end{itemize}
+    
+    \mysubsection{Tesla}
+    Creating automated/self-driving cars is a new world of technologies as the computer can only "simulate" the real world from its many sensors. To avoid accidents we need to first know what kinds of accidents we might want to try to stop, how to stop it, and then which sensors to use, and then understand the sensor data, then account for false positives.
+    \\\\
+    One of the easiest accidents to start with might be drivers falling asleep behind the wheel. We know this happens, and that we can often prevent it by simply warning the driver with sounds, and if no response happens then stop the car. We could also look at the distance to the car in front and depending on the speed and weather warn the driver or slow down.
+    \\\\
+    If the task simply becomes to tell if the driver is sleepy, and warn the driver/stop the car, we will need some data about the driver and possibly his driving. We do know that falling asleep happens gradually, and we can therefore assume that the driver will start responding later then expected. One sensor we can use is an eye-tracking sensor to detect if the eye-movement is normal, and measure the time between blinking and their length. Another sensor is could be placed with the front wheels to detect if the driver is driving too close to the lines over a longer period.
+    \\\\
+    To generate the test data here in a safe manner is important. For the eye-tracking one could possibly emulate the experience of both intoxicated and tired drivers in a simulator while using the same sensor to track their eye movement.
+    \\\\
+    \begin{itemize}
+    \item \textbf{T(Task):} Read driver data and predict possible dangers before they cause an accident.
+    \item \textbf{P(Performance):} Could be measured by testing with the predictions accuracy during simulation being scored by both the driver and a trainer.
+    \item \textbf{E(Experience):} The data which will be needed is many hours of simulated driving with different people, their score and the trainers score.
+    \end{itemize}
+    
+    
+    \newpage
+    
+    \mysubsection{Industrial waste INC}
+    In this case, could you just not move the workers even further away from the arms? Or maybe require the companies delivering said goods to label them with machine-readable labels like a bar-code or QR-code? Then replace the arms with just pushers?
+    \\\\
+    ANYWAY! Automating such a process will be very hard as they don't necessarily know what is coming in. All kinds of sensors could be used: cameras to estimate the size of the container, a weight to further estimate the volume, infra-red camera, Geiger counter, one would need to automate every test they otherwise would have done.
+    \\\\
+    \begin{itemize}
+    \item \textbf{T(Task):} Rad all possible inputs on the container, then guessing which chemical it is, then activate sorting arms/pushers accordingly.
+    \item \textbf{P(Performance):} Matching predictions against correct answer.
+    \item \textbf{E(Experience):} There needs to be a great amount of sensors to properly sort all the different incoming chemicals. And the amount of learning date should also be large as this might be high risk.
+    \end{itemize}
     
     % % % % % % % % % % % % % % % % %
     %
