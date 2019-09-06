@@ -1,0 +1,1613 @@
+\documentclass[11pt]{article}
+
+ 
+    
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{LinearModels\_ex2}
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb. 
+    \makeatletter
+        \newbox\Wrappedcontinuationbox 
+        \newbox\Wrappedvisiblespacebox 
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}} 
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}} 
+        \newcommand*\Wrappedcontinuationindent {3ex } 
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox} 
+        % Take advantage of the already applied Pygments mark-up to insert 
+        % potential linebreaks for TeX processing. 
+        %        {, <, #, %, $, ' and ": go to next line. 
+        %        _, }, ^, &, >, - and ~: stay at end of broken line. 
+        % Use of \textquotesingle for straight quote. 
+        \newcommand*\Wrappedbreaksatspecials {% 
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}% 
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}% 
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}% 
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}% 
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}% 
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}% 
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}% 
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}% 
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}% 
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}% 
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}% 
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}% 
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}% 
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}% 
+        } 
+        % Some characters . , ; ? ! / are not pygmentized. 
+        % This macro makes them "active" and they will insert potential linebreaks 
+        \newcommand*\Wrappedbreaksatpunct {% 
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}% 
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}% 
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}% 
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}% 
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}% 
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}% 
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}% 
+            \catcode`\.\active
+            \catcode`\,\active 
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active 
+            \lccode`\~`\~ 	
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+        
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active 	
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+    
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        \ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+
+    
+    
+
+\begin{document}
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{univariate-regression}{%
+\section{1.Univariate Regression}\label{univariate-regression}}
+
+In this part you have to first we try and implement the building blocks
+for a linear regression implementation. First of all, we need to make
+sure to have the necessary libraries installed.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{127}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{c+c1}{\PYZsh{} Read the X and y values from unilinear.csv}
+\PY{n}{datapoints} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{unilinear.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{X} \PY{o}{=} \PY{n}{datapoints}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{X}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+
+
+\PY{n}{y} \PY{o}{=} \PY{n}{datapoints}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}
+\PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} let us plot the data}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_1_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{exercise-1.1}{%
+\subsection{Exercise 1.1}\label{exercise-1.1}}
+
+Implement the closed form of linear regression which was taught in the
+lecture: \#\#\#\#\# Hints: 1. Add a column of 1's to X using
+\texttt{np.hstack}. This column of 1's models for the y-intercept
+(\(w_0\)). 2. Use \texttt{inv} function in numpy to find the inverse of
+a matrix. inv is defined in \texttt{numpy.linalg} module so will need to
+import it from it. 3. To multiply two matrices \texttt{a} and
+\texttt{b}, use the following notation in python \texttt{a.dot(b)} 4. To
+transpose a matrix \texttt{c} use \texttt{c.T}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{128}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{k+kn}{from} \PY{n+nn}{numpy}\PY{n+nn}{.}\PY{n+nn}{linalg} \PY{k}{import} \PY{n}{inv}
+\PY{n}{t} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asmatrix}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{X}\PY{o}{.}\PY{n}{dtype}\PY{p}{)}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\PY{n}{xT} \PY{o}{=} \PY{n}{t}\PY{o}{.}\PY{n}{T}
+\PY{n}{xTx} \PY{o}{=} \PY{n}{xT}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+\PY{n}{xTy} \PY{o}{=} \PY{n}{xT}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+
+\PY{n}{b} \PY{o}{=} \PY{n}{inv}\PY{p}{(}\PY{n}{xTx}\PY{p}{)}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{xTy}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[6.45478709]
+ [5.02129039]]
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{129}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} TODO}
+\PY{c+c1}{\PYZsh{} Check the values of w\PYZus{}hat vector}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Task unclear}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Task unclear
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{130}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{r} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}
+\PY{n}{y1} \PY{o}{=} \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{*}\PY{n}{r} \PY{o}{+} \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+
+\PY{n}{y1} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{y1}\PY{p}{)}
+
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{r}\PY{p}{,} \PY{n}{y1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{exercise-1.2}{%
+\subsection{Exercise 1.2}\label{exercise-1.2}}
+
+\hypertarget{implementation-of-gradient-descent}{%
+\subsubsection{Implementation of Gradient
+Descent}\label{implementation-of-gradient-descent}}
+
+Calculate the loss function of Mean Square Error (MSE):
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{131}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{loss\PYZus{}function}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{)}\PY{p}{:}
+    \PY{n}{mse} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{*} \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{n}{yi} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{n}{w1}\PY{o}{*}\PY{n}{xi} \PY{o}{+} \PY{n}{w0}\PY{p}{)}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2} \PY{k}{for} \PY{n}{xi}\PY{p}{,} \PY{n}{yi} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+    \PY{k}{return} \PY{n}{mse}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Next you need to evaluate the current function with respect to w0 and
+w1. In order to do that caculate the one step derivatives of the MSE
+with respect to w0 and w1:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{132}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{compute\PYZus{}gradient}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{)}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} TODO}
+    \PY{c+c1}{\PYZsh{} calculate the gradient vector of partial derivatives of MSE with the formulat that you have found}
+    \PY{n}{w0\PYZus{}par\PYZus{}der} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{*} \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{o}{*}\PY{p}{(}\PY{n}{yi}\PY{o}{\PYZhy{}}\PY{p}{(}\PY{n}{w1}\PY{o}{*}\PY{n}{xi}\PY{o}{+}\PY{n}{w0}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{xi}\PY{p}{,} \PY{n}{yi} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+    \PY{n}{w1\PYZus{}par\PYZus{}der} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{*} \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{xi}\PY{o}{*}\PY{p}{(}\PY{n}{yi}\PY{o}{\PYZhy{}}\PY{p}{(}\PY{n}{w1}\PY{o}{*}\PY{n}{xi}\PY{o}{+}\PY{n}{w0}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{xi}\PY{p}{,} \PY{n}{yi} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} make a gradient vector from the partial derivatives    }
+    \PY{n}{gradient\PYZus{}mse} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{w0\PYZus{}par\PYZus{}der}\PY{p}{,} \PY{n}{w1\PYZus{}par\PYZus{}der}\PY{p}{]}\PY{p}{)}
+    \PY{k}{return} \PY{n}{gradient\PYZus{}mse}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Now you need to update your \(w_0\) and \(w_1\) using a certain learning
+rate:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{133}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{update\PYZus{}parameters}\PY{p}{(}\PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{,} \PY{n}{w0\PYZus{}par\PYZus{}der}\PY{p}{,} \PY{n}{w1\PYZus{}par\PYZus{}der}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{p}{)}\PY{p}{:}
+    \PY{n}{weight\PYZus{}vector} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{]}\PY{p}{)} 
+    \PY{n}{gradient\PYZus{}mse} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{w0\PYZus{}par\PYZus{}der}\PY{p}{,} \PY{n}{w1\PYZus{}par\PYZus{}der}\PY{p}{]}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} TODO}
+    \PY{c+c1}{\PYZsh{} update the vector of W (w0,w1) using the update rule and return the value of updated weights}
+    \PY{n}{updated\PYZus{}weight\PYZus{}vector} \PY{o}{=} \PY{n}{weight\PYZus{}vector} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{n}{gradient\PYZus{}mse}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{learning\PYZus{}rate}\PY{p}{)}\PY{p}{)}
+    
+    \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{ndarray}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{n}{updated\PYZus{}weight\PYZus{}vector}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    The next step is to run multiple iterations of gradient descent:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{134}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{run\PYZus{}optimization}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{starting\PYZus{}w0}\PY{p}{,} \PY{n}{starting\PYZus{}w1}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{p}{,} \PY{n}{num\PYZus{}iterations}\PY{p}{)}\PY{p}{:}
+    \PY{n}{w0} \PY{o}{=} \PY{n}{starting\PYZus{}w0}
+    \PY{n}{w1} \PY{o}{=} \PY{n}{starting\PYZus{}w1}
+    \PY{c+c1}{\PYZsh{} TODO}
+    \PY{c+c1}{\PYZsh{} run the Gradient descent for num\PYZus{}iterations}
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}iterations}\PY{p}{)}\PY{p}{:}
+        \PY{n}{mse} \PY{o}{=} \PY{n}{loss\PYZus{}function}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{)}
+        \PY{n}{w0\PYZus{}par\PYZus{}der}\PY{p}{,} \PY{n}{w1\PYZus{}par\PYZus{}der} \PY{o}{=} \PY{n}{compute\PYZus{}gradient}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{)}
+        \PY{n}{w0}\PY{p}{,} \PY{n}{w1} \PY{o}{=} \PY{n}{update\PYZus{}parameters}\PY{p}{(}\PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{,} \PY{n}{w0\PYZus{}par\PYZus{}der}\PY{p}{,} \PY{n}{w1\PYZus{}par\PYZus{}der}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Iteration }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{i+1\PYZcb{}: w0=}\PY{l+s+si}{\PYZob{}w0:0.5f\PYZcb{}}\PY{l+s+s1}{, w1=}\PY{l+s+si}{\PYZob{}w1:0.5f\PYZcb{}}\PY{l+s+s1}{, mse=}\PY{l+s+si}{\PYZob{}mse:0.5f\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{k}{return} \PY{p}{[}\PY{n}{w0}\PY{p}{,} \PY{n}{w1}\PY{p}{,} \PY{n}{mse}\PY{p}{]}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Now to test your implementation :
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{135}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{num\PYZus{}iterations} \PY{o}{=} \PY{l+m+mi}{40}
+\PY{n}{learning\PYZus{}rate} \PY{o}{=} \PY{l+m+mf}{0.1}
+\PY{n}{starting\PYZus{}w0} \PY{o}{=} \PY{l+m+mi}{0} \PY{c+c1}{\PYZsh{} initial y\PYZhy{}intercept guess}
+\PY{n}{starting\PYZus{}w1} \PY{o}{=} \PY{l+m+mi}{0} \PY{c+c1}{\PYZsh{} initial slope guess}
+
+\PY{p}{[}\PY{n}{w0}\PY{p}{,}\PY{n}{w1}\PY{p}{,}\PY{n}{\PYZus{}}\PY{p}{]} \PY{o}{=} \PY{n}{run\PYZus{}optimization}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{starting\PYZus{}w0}\PY{p}{,} \PY{n}{starting\PYZus{}w1}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{p}{,} \PY{n}{num\PYZus{}iterations}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Iteration 1: w0=2.21493, w1=2.32156, mse=129.85076
+Iteration 2: w0=3.55968, w1=3.71134, mse=47.34810
+Iteration 3: w0=4.37975, w1=4.53985, mse=17.37766
+Iteration 4: w0=4.88335, w1=5.03039, mse=6.48588
+Iteration 5: w0=5.19596, w1=5.31750, mse=2.52335
+Iteration 6: w0=5.39322, w1=5.48225, mse=1.07772
+Iteration 7: w0=5.52071, w1=5.57351, mse=0.54653
+Iteration 8: w0=5.60591, w1=5.62070, mse=0.34778
+Iteration 9: w0=5.66539, w1=5.64156, mse=0.27009
+Iteration 10: w0=5.70913, w1=5.64676, mse=0.23667
+Iteration 11: w0=5.74317, w1=5.64274, mse=0.21963
+Iteration 12: w0=5.77114, w1=5.63336, mse=0.20881
+Iteration 13: w0=5.79524, w1=5.62095, mse=0.20051
+Iteration 14: w0=5.81681, w1=5.60691, mse=0.19336
+Iteration 15: w0=5.83664, w1=5.59208, mse=0.18687
+Iteration 16: w0=5.85524, w1=5.57694, mse=0.18084
+Iteration 17: w0=5.87290, w1=5.56180, mse=0.17517
+Iteration 18: w0=5.88982, w1=5.54683, mse=0.16984
+Iteration 19: w0=5.90611, w1=5.53212, mse=0.16481
+Iteration 20: w0=5.92185, w1=5.51774, mse=0.16006
+Iteration 21: w0=5.93708, w1=5.50371, mse=0.15558
+Iteration 22: w0=5.95185, w1=5.49004, mse=0.15135
+Iteration 23: w0=5.96618, w1=5.47674, mse=0.14736
+Iteration 24: w0=5.98010, w1=5.46381, mse=0.14359
+Iteration 25: w0=5.99361, w1=5.45124, mse=0.14004
+Iteration 26: w0=6.00673, w1=5.43902, mse=0.13668
+Iteration 27: w0=6.01947, w1=5.42714, mse=0.13351
+Iteration 28: w0=6.03185, w1=5.41561, mse=0.13052
+Iteration 29: w0=6.04388, w1=5.40439, mse=0.12769
+Iteration 30: w0=6.05557, w1=5.39350, mse=0.12503
+Iteration 31: w0=6.06692, w1=5.38292, mse=0.12251
+Iteration 32: w0=6.07795, w1=5.37263, mse=0.12014
+Iteration 33: w0=6.08867, w1=5.36264, mse=0.11790
+Iteration 34: w0=6.09908, w1=5.35294, mse=0.11578
+Iteration 35: w0=6.10919, w1=5.34351, mse=0.11378
+Iteration 36: w0=6.11902, w1=5.33434, mse=0.11190
+Iteration 37: w0=6.12857, w1=5.32544, mse=0.11012
+Iteration 38: w0=6.13784, w1=5.31679, mse=0.10844
+Iteration 39: w0=6.14686, w1=5.30839, mse=0.10685
+Iteration 40: w0=6.15561, w1=5.30022, mse=0.10536
+    \end{Verbatim}
+
+    Test it again with learning rate of 1:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{136}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{num\PYZus{}iterations} \PY{o}{=} \PY{l+m+mi}{40}
+\PY{n}{learning\PYZus{}rate} \PY{o}{=} \PY{l+m+mi}{1}
+\PY{n}{starting\PYZus{}w0} \PY{o}{=} \PY{l+m+mi}{0} \PY{c+c1}{\PYZsh{} initial y\PYZhy{}intercept guess}
+\PY{n}{starting\PYZus{}w1} \PY{o}{=} \PY{l+m+mi}{0} \PY{c+c1}{\PYZsh{} initial slope guess}
+
+\PY{n}{w0\PYZus{}prime}\PY{p}{,}\PY{n}{w1\PYZus{}prime}\PY{p}{,}\PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{run\PYZus{}optimization}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{starting\PYZus{}w0}\PY{p}{,} \PY{n}{starting\PYZus{}w1}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{p}{,} \PY{n}{num\PYZus{}iterations}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Iteration 1: w0=22.14932, w1=23.21556, mse=129.85076
+Iteration 2: w0=-42.71926, w1=-46.74664, mse=1145.57670
+Iteration 3: w0=150.88767, w1=160.63065, mse=10128.04447
+Iteration 4: w0=-424.31690, w1=-456.50662, mse=89555.47553
+Iteration 5: w0=1286.48998, w1=1378.28758, mse=791888.03243
+Iteration 6: w0=-3800.54553, w1=-4077.94397, mse=7002221.73248
+Iteration 7: w0=11326.57248, w1=12146.66334, mse=61916725.58570
+Iteration 8: w0=-33655.65605, w1=-36099.34411, mse=547494936.94083
+Iteration 9: w0=100104.67708, w1=107366.05570, mse=4841191188.06991
+Iteration 10: w0=-297648.20061, w1=-319246.17412, mse=42807943125.80426
+Iteration 11: w0=885119.37920, w1=949338.17515, mse=378526673187.83038
+Iteration 12: w0=-2631986.72972, w1=-2822954.81277, mse=3347099436517.65381
+Iteration 13: w0=7826564.67594, w1=8394426.39002, mse=29596526299163.96094
+Iteration 14: w0=-23273235.49838, w1=-24961848.36840, mse=261705511171927.12500
+Iteration 15: w0=69205878.87034, w1=74227173.11104, mse=2314115308177042.50000
+Iteration 16: w0=-205792241.53592, w1=-220723688.60170,
+mse=20462426012959608.00000
+Iteration 17: w0=611948788.38565, w1=656349293.10915,
+mse=180937776460969888.00000
+Iteration 18: w0=-1819705620.82495, w1=-1951736036.04321,
+mse=1599931451427382528.00000
+Iteration 19: w0=5411120459.18069, w1=5803729274.10370,
+mse=14147298034353278976.00000
+Iteration 20: w0=-16090638014.89172, w1=-17258109042.54005,
+mse=125096635542888562688.00000
+Iteration 21: w0=47847508520.78714, w1=51319128463.39094,
+mse=1106159507359643860992.00000
+Iteration 22: w0=-142280502978.70807, w1=-152603795605.97781,
+mse=9781149192478737301504.00000
+Iteration 23: w0=423088728307.66864, w1=453786319735.20618,
+mse=86489225910908386017280.00000
+Iteration 24: w0=-1258106826015.98535, w1=-1349389922767.13721,
+mse=764775800007245449658368.00000
+Iteration 25: w0=3741136739904.13086, w1=4012578353538.70557,
+mse=6762484206751982217592832.00000
+Iteration 26: w0=-11124734257148.39648, w1=-11931899572929.36719,
+mse=59796861571896996024811520.00000
+Iteration 27: w0=33080777554183.69531, w1=35480983765272.36719,
+mse=528750167028633273588776960.00000
+Iteration 28: w0=-98369796373793.28125, w1=-105507107334922.43750,
+mse=4675441683451193189673730048.00000
+Iteration 29: w0=292514794211695.37500, w1=313738473877408.93750,
+mse=41342313059107037959413563392.00000
+Iteration 30: w0=-869829032760871.37500, w1=-932940277458793.00000,
+mse=365566927104857332415427772416.00000
+Iteration 31: w0=2586544548191923.00000, w1=2774213664483522.50000,
+mse=3232503657979280540727588683776.00000
+Iteration 32: w0=-7691411125409637.00000, w1=-8249468526721372.00000,
+mse=28583219990938255912352121618432.00000
+Iteration 33: w0=22871365251152788.00000, w1=24530818171871528.00000,
+mse=252745410831522327856728017731584.00000
+Iteration 34: w0=-68010842213791872.00000, w1=-72945431361089536.00000,
+mse=2234886157565417650260998484918272.00000
+Iteration 35: w0=202238677395795488.00000, w1=216912290457430976.00000,
+mse=19761846993957685191075868386000896.00000
+Iteration 36: w0=-601381798893625216.00000, w1=-645015607880643072.00000,
+mse=174742948445311511254070362051182592.00000
+Iteration 37: w0=1788283392166068224.00000, w1=1918033936815049216.00000,
+mse=1545154055726526597218597455586656256.00000
+Iteration 38: w0=-5317682538082018304.00000, w1=-5703511880684576768.00000,
+mse=13662932193657822038043245691642314752.00000
+Iteration 39: w0=15812788789348884480.00000, w1=16960100209241989120.00000,
+mse=120813659606722435317413440210945966080.00000
+Iteration 40: w0=-47021289350368772096.00000, w1=-50432962203807088640.00000,
+mse=1068287549164905560662798246756501946368.00000
+    \end{Verbatim}
+
+    Compare your results with the sklearn version of linear regression:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{137}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} import LinearRegression class from sklearn.linear\PYZus{}model module}
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{LinearRegression}
+
+\PY{c+c1}{\PYZsh{} make a lin\PYZus{}reg object form the LinearRegression class}
+\PY{n}{lin\PYZus{}reg} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+\PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{y}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZhy{}intercept w1:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{intercept\PYZus{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{slope w0:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{coef\PYZus{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+y-intercept w1: [6.45478709]
+slope w0: [[5.02129039]]
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{138}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+\PY{c+c1}{\PYZsh{} TODO}
+\PY{c+c1}{\PYZsh{} plot the original data points as a scatter plot}
+
+\PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{num\PYZus{}iterations} \PY{o}{=} \PY{l+m+mi}{40}
+\PY{n}{learning\PYZus{}rate} \PY{o}{=} \PY{l+m+mf}{0.1}
+\PY{p}{[}\PY{n}{w0}\PY{p}{,}\PY{n}{w1}\PY{p}{,}\PY{n}{\PYZus{}}\PY{p}{]} \PY{o}{=} \PY{n}{run\PYZus{}optimization}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{starting\PYZus{}w0}\PY{p}{,} \PY{n}{starting\PYZus{}w1}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{p}{,} \PY{n}{num\PYZus{}iterations}\PY{p}{)}
+
+\PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{y}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZhy{}intercept w1:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{intercept\PYZus{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{slope w0:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{coef\PYZus{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} plot the line that fits these points. }
+\PY{n}{y\PYZus{}} \PY{o}{=} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\PY{n}{y\PYZus{}GD} \PY{o}{=} \PY{n}{w1}\PY{o}{*} \PY{n}{X} \PY{o}{+} \PY{n}{w0}
+
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sklearn fit}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}GD}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{GD fit}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Iteration 1: w0=2.21493, w1=2.32156, mse=129.85076
+Iteration 2: w0=3.55968, w1=3.71134, mse=47.34810
+Iteration 3: w0=4.37975, w1=4.53985, mse=17.37766
+Iteration 4: w0=4.88335, w1=5.03039, mse=6.48588
+Iteration 5: w0=5.19596, w1=5.31750, mse=2.52335
+Iteration 6: w0=5.39322, w1=5.48225, mse=1.07772
+Iteration 7: w0=5.52071, w1=5.57351, mse=0.54653
+Iteration 8: w0=5.60591, w1=5.62070, mse=0.34778
+Iteration 9: w0=5.66539, w1=5.64156, mse=0.27009
+Iteration 10: w0=5.70913, w1=5.64676, mse=0.23667
+Iteration 11: w0=5.74317, w1=5.64274, mse=0.21963
+Iteration 12: w0=5.77114, w1=5.63336, mse=0.20881
+Iteration 13: w0=5.79524, w1=5.62095, mse=0.20051
+Iteration 14: w0=5.81681, w1=5.60691, mse=0.19336
+Iteration 15: w0=5.83664, w1=5.59208, mse=0.18687
+Iteration 16: w0=5.85524, w1=5.57694, mse=0.18084
+Iteration 17: w0=5.87290, w1=5.56180, mse=0.17517
+Iteration 18: w0=5.88982, w1=5.54683, mse=0.16984
+Iteration 19: w0=5.90611, w1=5.53212, mse=0.16481
+Iteration 20: w0=5.92185, w1=5.51774, mse=0.16006
+Iteration 21: w0=5.93708, w1=5.50371, mse=0.15558
+Iteration 22: w0=5.95185, w1=5.49004, mse=0.15135
+Iteration 23: w0=5.96618, w1=5.47674, mse=0.14736
+Iteration 24: w0=5.98010, w1=5.46381, mse=0.14359
+Iteration 25: w0=5.99361, w1=5.45124, mse=0.14004
+Iteration 26: w0=6.00673, w1=5.43902, mse=0.13668
+Iteration 27: w0=6.01947, w1=5.42714, mse=0.13351
+Iteration 28: w0=6.03185, w1=5.41561, mse=0.13052
+Iteration 29: w0=6.04388, w1=5.40439, mse=0.12769
+Iteration 30: w0=6.05557, w1=5.39350, mse=0.12503
+Iteration 31: w0=6.06692, w1=5.38292, mse=0.12251
+Iteration 32: w0=6.07795, w1=5.37263, mse=0.12014
+Iteration 33: w0=6.08867, w1=5.36264, mse=0.11790
+Iteration 34: w0=6.09908, w1=5.35294, mse=0.11578
+Iteration 35: w0=6.10919, w1=5.34351, mse=0.11378
+Iteration 36: w0=6.11902, w1=5.33434, mse=0.11190
+Iteration 37: w0=6.12857, w1=5.32544, mse=0.11012
+Iteration 38: w0=6.13784, w1=5.31679, mse=0.10844
+Iteration 39: w0=6.14686, w1=5.30839, mse=0.10685
+Iteration 40: w0=6.15561, w1=5.30022, mse=0.10536
+y-intercept w1: [6.45478709]
+slope w0: [[5.02129039]]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{multivariate-regression}{%
+\section{2.Multivariate Regression}\label{multivariate-regression}}
+
+In this part we will try to work with more complicated datasets. In
+order to import datasets into your models first we need to use pandas
+library for python:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{139}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+
+\PY{c+c1}{\PYZsh{} make a dataframe of the data}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Psychology grades.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} show first five rows of df}
+\PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{n}{n}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{139}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+   EXAM1  EXAM2  EXAM3  FINAL
+0     73     80     75    152
+1     93     88     93    185
+2     89     91     90    180
+3     96     98    100    196
+4     73     66     70    142
+\end{Verbatim}
+\end{tcolorbox}
+        
+    Next we need to seperate features and labels:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{140}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Extract the last column and set it to the output or dependent varaible y}
+\PY{n}{y} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{FINAL}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} Remove the first column and set the rest of the dataframe to X. This is the set of indepedent variables}
+\PY{n}{X} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{FINAL}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} show first five rows of X}
+\PY{n}{X}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{n}{n}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{140}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+   EXAM1  EXAM2  EXAM3
+0     73     80     75
+1     93     88     93
+2     89     91     90
+3     96     98    100
+4     73     66     70
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{141}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} show first five rows of y}
+\PY{n}{y}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{n}{n}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{141}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+   FINAL
+0    152
+1    185
+2    180
+3    196
+4    142
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \hypertarget{exercise-2.1}{%
+\subsection{Exercise 2.1}\label{exercise-2.1}}
+
+Now fit a Multivariate Linear Regression model to it.
+
+    \hypertarget{hint}{%
+\subparagraph{Hint:}\label{hint}}
+
+Use LinearRegression from sklearn in order to fit the model.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{142}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} TODO}
+\PY{c+c1}{\PYZsh{} fit a linear regression using sklearn. LinearRegression to the exam dataset and show the values of intercept\PYZus{} and coef\PYZus{}}
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{LinearRegression}
+
+\PY{n}{lin\PYZus{}reg} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+\PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZhy{}intercept w1:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{intercept\PYZus{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{slope w0:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{coef\PYZus{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+y-intercept w1: [-4.3361024]
+slope w0: [[0.35593822 0.54251876 1.16744422]]
+    \end{Verbatim}
+
+    find out the grade for 50, 60 and 70 in exams:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{143}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{myGrades} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{50}\PY{p}{,}\PY{l+m+mi}{60}\PY{p}{,}\PY{l+m+mi}{70}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\PY{n}{est} \PY{o}{=} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{myGrades}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{est}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[127.73302913]]
+    \end{Verbatim}
+
+    Now let's load the datapoints from ``nonlinear.csv'' and
+``nonlinear\_val.csv'' file:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{144}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+
+\PY{n}{datapoints} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nonlinear.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{datapoints\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nonlinear\PYZus{}val.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{X} \PY{o}{=} \PY{n}{datapoints}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{X}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+
+
+\PY{n}{y} \PY{o}{=} \PY{n}{datapoints}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}
+\PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+
+
+\PY{n}{X\PYZus{}val} \PY{o}{=} \PY{n}{datapoints\PYZus{}val}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{n}{X\PYZus{}val} \PY{o}{=} \PY{n}{X\PYZus{}val}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{X\PYZus{}val}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{axis} \PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+
+\PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{datapoints\PYZus{}val}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}
+\PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{y\PYZus{}val}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} plot it}
+\PY{n}{fig} \PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,}\PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_32_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{exercise-2.2}{%
+\subsection{Exercise 2.2}\label{exercise-2.2}}
+
+Fit a normal linear regression on training dataset and check the MSE on
+each training and validation sets and plot the resulting functions on
+two separate plots with each corresponding to each set.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{145}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics} \PY{k}{import} \PY{n}{mean\PYZus{}squared\PYZus{}error}
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{LinearRegression}
+
+
+\PY{n}{lin\PYZus{}reg} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+\PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+
+
+\PY{n}{y\PYZus{}} \PY{o}{=} \PY{n}{y\PYZus{}} \PY{o}{=} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\PY{n}{y\PYZus{}val\PYZus{}} \PY{o}{=} \PY{n}{lin\PYZus{}reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{)}
+
+
+\PY{c+c1}{\PYZsh{} use mean\PYZus{}squared\PYZus{}error from sklearn.metrics to calculate MSE}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y\PYZus{}}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y\PYZus{}val\PYZus{}}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} plot the function }
+\PY{n}{fig} \PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,}\PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{)}
+\PY{n}{ax1}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y\PYZus{}}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{y\PYZus{}val\PYZus{}}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+62.55930084175354
+82.28700425007989
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_34_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Now define an RBF function as your basis function
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{146}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{RBF}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{C}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{p}{(}\PY{n}{X}\PY{o}{\PYZhy{}}\PY{n}{C}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{/}\PY{n}{eps}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Transform datapoints according to the RBF functions with centers at
+(-5,-4,\ldots,4,5) with epsilon of 0.1 to a 11-dimensional space (number
+of colums = 11): \#\#\#\#\# Hint: Use \texttt{np.hstack} in order to add
+new columns to the matrix
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{147}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{centers} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}
+\PY{n}{eps} \PY{o}{=} \PY{l+m+mf}{0.1}
+\PY{n}{X\PYZus{}RBF} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asmatrix}\PY{p}{(}\PY{n}{RBF}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{centers}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}
+\PY{n}{X\PYZus{}RBF\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asmatrix}\PY{p}{(}\PY{n}{RBF}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{centers}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}
+
+\PY{k}{for} \PY{n}{ci} \PY{o+ow}{in} \PY{n}{centers}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{:}
+    \PY{n}{X\PYZus{}RBF} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{X\PYZus{}RBF}\PY{p}{,}\PY{n}{RBF}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{ci}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+    \PY{n}{X\PYZus{}RBF\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}val}\PY{p}{,}\PY{n}{RBF}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{ci}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{X\PYZus{}RBF}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}val}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(100, 11)
+(20, 11)
+    \end{Verbatim}
+
+    Try to fit a linear regression on the new X\_RBF:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{148}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} TODO}
+\PY{c+c1}{\PYZsh{} Fit a linear regression model to the RBF\PYZhy{}transformed data}
+\PY{n}{clf} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+\PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}RBF}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} find the predicted values}
+\PY{n}{y\PYZus{}}\PY{o}{=} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}RBF}\PY{p}{)}
+\PY{n}{y\PYZus{}val\PYZus{}}\PY{o}{=} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}val}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{}find the mean square error on the training and validation sets}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y\PYZus{}}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y\PYZus{}val\PYZus{}}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}\PY{p}{)}
+
+
+\PY{n}{fig} \PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,}\PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{)}
+\PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fitted for RBF\PYZhy{}transformed on training data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fitted for RBF\PYZhy{}transformed on training data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}
+
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+22.674391620742504
+23.763442433934912
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_40_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Now repeat the same procedure but this time put your centers at
+(-5,-4.9,-4.8,\ldots,4.8,4.9). (your new space should have 100
+dimensions)
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{149}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{centers} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{5.0}\PY{p}{,}\PY{l+m+mf}{5.0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
+\PY{n}{eps} \PY{o}{=} \PY{l+m+mf}{0.1}
+\PY{n}{X\PYZus{}RBF\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asmatrix}\PY{p}{(}\PY{n}{RBF}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{centers}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}
+\PY{n}{X\PYZus{}RBF\PYZus{}val\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asmatrix}\PY{p}{(}\PY{n}{RBF}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{centers}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}
+
+\PY{k}{for} \PY{n}{ci} \PY{o+ow}{in} \PY{n}{centers}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{:}
+    \PY{n}{X\PYZus{}RBF\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}2}\PY{p}{,}\PY{n}{RBF}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{ci}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+    \PY{n}{X\PYZus{}RBF\PYZus{}val\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}val\PYZus{}2}\PY{p}{,}\PY{n}{RBF}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{ci}\PY{p}{,}\PY{n}{eps}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+
+\PY{n+nb}{print} \PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}2}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+\PY{n+nb}{print} \PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}val\PYZus{}2}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(100, 100)
+(20, 100)
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{150}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{clf2} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+\PY{n}{clf2}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}2}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} find the predicted values}
+\PY{n}{y2\PYZus{}}\PY{o}{=} \PY{n}{clf2}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}2}\PY{p}{)}
+\PY{n}{y2\PYZus{}val\PYZus{}}\PY{o}{=} \PY{n}{clf2}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}val\PYZus{}2}\PY{p}{)}
+
+
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y2\PYZus{}}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y2\PYZus{}val\PYZus{}}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{fig} \PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,}\PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{)}
+\PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y2\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fitted for RBF\PYZhy{}transformed on training data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y2\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fitted for RBF\PYZhy{}transformed on training data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}
+
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0.03431057347240752
+534136053610348.9
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_43_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    In order to solve overfitting use the Ridge regularization. plot the
+resulting fit and compare it with the last one. \#\#\#\#\# Hint: Use the
+\texttt{Ridge} from \texttt{sklearn.linear\_model} with \texttt{alpha=1}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{151}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{Ridge}
+
+\PY{c+c1}{\PYZsh{} Create Ridge regression object from Ridge class}
+\PY{n}{ridge\PYZus{}reg} \PY{o}{=} \PY{n}{Ridge}\PY{p}{(}\PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{1.0}\PY{p}{)}
+\PY{n}{ridge\PYZus{}reg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}2}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+
+\PY{n}{yRidge\PYZus{}} \PY{o}{=} \PY{n}{ridge\PYZus{}reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}2}\PY{p}{)}
+\PY{n}{yRidge\PYZus{}val\PYZus{}} \PY{o}{=} \PY{n}{ridge\PYZus{}reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}RBF\PYZus{}val\PYZus{}2}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} plot original data and predicted fit}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{yRidge\PYZus{}}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{yRidge\PYZus{}val\PYZus{}}\PY{p}{,}\PY{n}{y\PYZus{}val}\PY{p}{)}\PY{p}{)}
+
+
+\PY{n}{fig} \PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,}\PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Original data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{yRidge\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fit for Ridge\PYZus{}RBF\PYZhy{}transformed data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Original data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{yRidge\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fit for Ridge\PYZus{}RBF\PYZhy{}transformed data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+5.583132917278022
+9.710038521599477
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_45_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{logistic-regression}{%
+\section{3. Logistic Regression}\label{logistic-regression}}
+
+    First we need to load a dataset.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{152}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k}{import} \PY{n}{datasets}
+\PY{n}{iris} \PY{o}{=} \PY{n}{datasets}\PY{o}{.}\PY{n}{load\PYZus{}iris}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} iris is a dictionary of key\PYZhy{}value pairs. Each key\PYZhy{}value pairs contains some information about the dataset.}
+\PY{c+c1}{\PYZsh{} Lets display a list of these keys and see what they hold}
+\PY{n+nb}{list}\PY{p}{(}\PY{n}{iris}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{152}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+['data', 'target', 'target\_names', 'DESCR', 'feature\_names', 'filename']
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{itemize}
+\tightlist
+\item
+  \texttt{data}: holds the data of sepal and petal lengths and widths in
+  four columns,
+\item
+  \texttt{target}: holds the class of each flower. These class are
+  encoded as 0, 1, and 2,
+\item
+  \texttt{target\_names}: holds the names of each of the flower classes,
+\item
+  \texttt{DESCR}: contains a detailed description of the dataset, and
+\item
+  \texttt{feature\_names}: contains a list of name of the columns of
+  data
+\end{itemize}
+
+    load the petal width of the Iris-Versicolor and plot the data according
+to the labels of 1 and 0 (1 if Iris-Virginica, else 0)
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{153}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{iris}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DESCR}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.. \_iris\_dataset:
+
+Iris plants dataset
+--------------------
+
+**Data Set Characteristics:**
+
+    :Number of Instances: 150 (50 in each of three classes)
+    :Number of Attributes: 4 numeric, predictive attributes and the class
+    :Attribute Information:
+        - sepal length in cm
+        - sepal width in cm
+        - petal length in cm
+        - petal width in cm
+        - class:
+                - Iris-Setosa
+                - Iris-Versicolour
+                - Iris-Virginica
+
+    :Summary Statistics:
+
+    ============== ==== ==== ======= ===== ====================
+                    Min  Max   Mean    SD   Class Correlation
+    ============== ==== ==== ======= ===== ====================
+    sepal length:   4.3  7.9   5.84   0.83    0.7826
+    sepal width:    2.0  4.4   3.05   0.43   -0.4194
+    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
+    petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)
+    ============== ==== ==== ======= ===== ====================
+
+    :Missing Attribute Values: None
+    :Class Distribution: 33.3\% for each of 3 classes.
+    :Creator: R.A. Fisher
+    :Donor: Michael Marshall (MARSHALL\%PLU@io.arc.nasa.gov)
+    :Date: July, 1988
+
+The famous Iris database, first used by Sir R.A. Fisher. The dataset is taken
+from Fisher's paper. Note that it's the same as in R, but not as in the UCI
+Machine Learning Repository, which has two wrong data points.
+
+This is perhaps the best known database to be found in the
+pattern recognition literature.  Fisher's paper is a classic in the field and
+is referenced frequently to this day.  (See Duda \& Hart, for example.)  The
+data set contains 3 classes of 50 instances each, where each class refers to a
+type of iris plant.  One class is linearly separable from the other 2; the
+latter are NOT linearly separable from each other.
+
+.. topic:: References
+
+   - Fisher, R.A. "The use of multiple measurements in taxonomic problems"
+     Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to
+     Mathematical Statistics" (John Wiley, NY, 1950).
+   - Duda, R.O., \& Hart, P.E. (1973) Pattern Classification and Scene Analysis.
+     (Q327.D83) John Wiley \& Sons.  ISBN 0-471-22361-1.  See page 218.
+   - Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+     Structure and Classification Rule for Recognition in Partially Exposed
+     Environments".  IEEE Transactions on Pattern Analysis and Machine
+     Intelligence, Vol. PAMI-2, No. 1, 67-71.
+   - Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE Transactions
+     on Information Theory, May 1972, 431-433.
+   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al"s AUTOCLASS II
+     conceptual clustering system finds 3 classes in the data.
+   - Many, many more {\ldots}
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{162}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} let us get the petal width. It is present in the 4th column of data}
+\PY{n}{X} \PY{o}{=} \PY{n}{iris}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]} 
+\PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{X}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} lets define a binaray variable that encodes whether a flower is Iris\PYZhy{}Versicolor or not}
+\PY{c+c1}{\PYZsh{} Iris\PYZus{}virginca flower is encoded as a 2 in target  }
+\PY{n}{y} \PY{o}{=} \PY{p}{(}\PY{n}{iris}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{target}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int}\PY{p}{)} \PY{c+c1}{\PYZsh{} 1 if Iris\PYZhy{}Virginica, else 0}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{163}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Petal width (cm)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Iris\PYZhy{}Virginica(1) }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{ Not Iris\PYZhy{}Virginica(0)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{163}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+Text(0, 0.5, 'Iris-Virginica(1) \textbackslash{}n Not Iris-Virginica(0)')
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_53_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Fit a linear regression model to the Iris pedal width for
+Iris-Versicolor and plot the results.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{164}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Fit a linear regression to the petal width}
+\PY{n}{clf} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+\PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+\PY{n}{y\PYZus{}} \PY{o}{=} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{original data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fit from linear regression}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_55_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Now fit a logistic regression to the same feature and compare the
+results to the linear regression in a plot.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{165}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{LogisticRegression}
+
+\PY{n}{X\PYZus{}new} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{solver}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lbfgs}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+\PY{n}{y\PYZus{}proba} \PY{o}{=} \PY{n}{clf}\PY{o}{.}\PY{n}{predict\PYZus{}proba}\PY{p}{(}\PY{n}{X\PYZus{}new}\PY{p}{)}
+\PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}new}\PY{p}{)}
+
+
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X\PYZus{}new}\PY{p}{,} \PY{n}{y\PYZus{}proba}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{g\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Iris\PYZhy{}Versicolor Prob}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X\PYZus{}new}\PY{p}{,} \PY{n}{y\PYZus{}proba}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{not Iris\PYZhy{}Versicolor Prob}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X\PYZus{}new}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_57_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Now import the features of sepal width and length from the dataset and
+try to fit a logistic regression on these features and and classes. plot
+the Plot the decision boundaries \#\#\#\#\# Hint: 1. Make an object from
+LogisticRegression class in sklearn as following:
+
+\texttt{multiclass\_logreg\_obj\ =\ LogisticRegression(multi\_class="multinomial",solver="lbfgs",\ C=10)}.
+
+\texttt{multiclass\_logreg\_obj} is just a name. It could be any
+(appropriate) name you like.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{166}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{X} \PY{o}{=} \PY{n}{iris}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]} \PY{c+c1}{\PYZsh{}sepal length}
+\PY{n}{xp} \PY{o}{=} \PY{n}{iris}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]} \PY{c+c1}{\PYZsh{}sepal width}
+\PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{xp} \PY{o}{=} \PY{n}{xp}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{xp}\PY{p}{)}\PY{p}{)}
+\PY{n}{y} \PY{o}{=} \PY{p}{(}\PY{n}{iris}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{target}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int}\PY{p}{)}
+
+\PY{k+kn}{from} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{colors} \PY{k}{import} \PY{n}{ListedColormap}
+
+\PY{c+c1}{\PYZsh{} Step size in the mesh:}
+\PY{n}{h} \PY{o}{=} \PY{o}{.}\PY{l+m+mi}{02}
+\PY{c+c1}{\PYZsh{} Light colors for decision boundaries plots:}
+\PY{n}{cmap\PYZus{}light} \PY{o}{=} \PY{n}{ListedColormap}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}FFAAAA}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}AAFFAA}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}AAAAFF}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} Bold colors for training points scatterplots:}
+\PY{n}{cmap\PYZus{}bold} \PY{o}{=} \PY{n}{ListedColormap}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}FF0000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}00FF00}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}0000FF}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{y}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{cmap\PYZus{}bold}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_59_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{159}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} TODO }
+\PY{c+c1}{\PYZsh{} fit a multi class logistic regression to the dataset}
+\PY{n}{multiclass\PYZus{}logreg\PYZus{}obj} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{multi\PYZus{}class}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{multinomial}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{solver}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lbfgs}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{C}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{multiclass\PYZus{}logreg\PYZus{}obj}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{} Decision boundaries plotting:}
+\PY{c+c1}{\PYZsh{} Generate the axis associated to the first feature: }
+\PY{n}{x\PYZus{}min} \PY{o}{=} \PY{n+nb}{min}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\PY{n}{x\PYZus{}max} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+
+\PY{n}{x\PYZus{}axis} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{x\PYZus{}min}\PY{p}{,} \PY{n}{x\PYZus{}max}\PY{p}{,} \PY{n}{h}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} Generate the axis associated to the second feature:}
+\PY{n}{y\PYZus{}min} \PY{o}{=} \PY{n+nb}{min}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\PY{n}{y\PYZus{}max} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+
+\PY{n}{y\PYZus{}axis} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{y\PYZus{}min}\PY{p}{,} \PY{n}{y\PYZus{}max}\PY{p}{,} \PY{n}{h}\PY{p}{)}
+
+
+\PY{c+c1}{\PYZsh{} Generate a meshgrid (2D grid) from the 2 axis:}
+
+\PY{n}{x\PYZus{}grid}\PY{p}{,} \PY{n}{y\PYZus{}grid} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{x\PYZus{}axis}\PY{p}{,} \PY{n}{y\PYZus{}axis}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} Vectorize the grids into column vectors:}
+\PY{n}{x\PYZus{}grid\PYZus{}vectorized} \PY{o}{=} \PY{n}{x\PYZus{}grid}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{x\PYZus{}grid\PYZus{}vectorized} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{expand\PYZus{}dims}\PY{p}{(}\PY{n}{x\PYZus{}grid\PYZus{}vectorized}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{y\PYZus{}grid\PYZus{}vectorized} \PY{o}{=} \PY{n}{y\PYZus{}grid}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\PY{n}{y\PYZus{}grid\PYZus{}vectorized} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{expand\PYZus{}dims}\PY{p}{(}\PY{n}{y\PYZus{}grid\PYZus{}vectorized}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} Concatenate the vectorized grids:}
+\PY{n}{concat\PYZus{}grids} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{concatenate}\PY{p}{(}\PY{p}{(}\PY{n}{x\PYZus{}grid\PYZus{}vectorized}\PY{p}{,} \PY{n}{y\PYZus{}grid\PYZus{}vectorized}\PY{p}{)}\PY{p}{,}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+
+
+\PY{c+c1}{\PYZsh{} Predict concatenated features to get the decision boundaries:}
+\PY{n}{decision\PYZus{}boundaries} \PY{o}{=} \PY{n}{multiclass\PYZus{}logreg\PYZus{}obj}\PY{o}{.}\PY{n}{predict\PYZus{}proba}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{decision\PYZus{}boundaries}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} Reshape the decision boundaries into a 2D matrix:}
+\PY{c+c1}{\PYZsh{}decision\PYZus{}boundaries = }
+\PY{c+c1}{\PYZsh{} Plot the decision boundaries:}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}plt.pcolormesh(, , , cmap=cmap\PYZus{}light)}
+\PY{c+c1}{\PYZsh{} Overlay the training points:}
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{y}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{cmap\PYZus{}bold}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}plt.xlabel()}
+\PY{c+c1}{\PYZsh{}plt.ylabel()}
+\PY{c+c1}{\PYZsh{}plt.title()}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[9.91084096e-01 7.56427619e-03 1.35162819e-03]
+ [9.28732038e-01 6.50755660e-02 6.19239560e-03]
+ [9.95339599e-01 4.33932390e-03 3.21077248e-04]
+ [9.95227467e-01 4.50852026e-03 2.64012572e-04]
+ [9.97801086e-01 1.89960136e-03 2.99313082e-04]
+ [9.95419949e-01 3.31765273e-03 1.26239874e-03]
+ [9.99430831e-01 5.32494996e-04 3.66742699e-05]
+ [9.91028866e-01 7.85966547e-03 1.11146821e-03]
+ [9.94954777e-01 4.86672476e-03 1.78498104e-04]
+ [9.63596654e-01 3.30805851e-02 3.32276053e-03]
+ [9.81714745e-01 1.36304174e-02 4.65483767e-03]
+ [9.97746615e-01 2.05097580e-03 2.02409084e-04]
+ [9.62919252e-01 3.43501513e-02 2.73059716e-03]
+ [9.98742025e-01 1.21856415e-03 3.94111022e-05]
+ [9.57530718e-01 2.32746223e-02 1.91946601e-02]
+ [9.98678746e-01 7.12145082e-04 6.09108963e-04]
+ [9.95419949e-01 3.31765273e-03 1.26239874e-03]
+ [9.91084096e-01 7.56427619e-03 1.35162819e-03]
+ [9.22997256e-01 4.75817981e-02 2.94209461e-02]
+ [9.98914878e-01 8.96677905e-04 1.88443732e-04]
+ [8.67807255e-01 1.02446235e-01 2.97465102e-02]
+ [9.97807911e-01 1.82811940e-03 3.63969225e-04]
+ [9.99862306e-01 1.27880324e-04 9.81340938e-06]
+ [9.64419020e-01 3.06635119e-02 4.91746770e-03]
+ [9.97746615e-01 2.05097580e-03 2.02409084e-04]
+ [8.67070910e-01 1.19335837e-01 1.35932525e-02]
+ [9.91028866e-01 7.85966547e-03 1.11146821e-03]
+ [9.82127117e-01 1.47235764e-02 3.14930657e-03]
+ [9.64507623e-01 2.95121538e-02 5.98022340e-03]
+ [9.95339599e-01 4.33932390e-03 3.21077248e-04]
+ [9.81407752e-01 1.71529429e-02 1.43930469e-03]
+ [8.67807255e-01 1.02446235e-01 2.97465102e-02]
+ [9.99731345e-01 2.07315204e-04 6.13399623e-05]
+ [9.98818968e-01 7.69044065e-04 4.11987439e-04]
+ [9.63596654e-01 3.30805851e-02 3.32276053e-03]
+ [9.64105028e-01 3.18523413e-02 4.04263100e-03]
+ [8.65582946e-01 9.83378097e-02 3.60792443e-02]
+ [9.98904386e-01 9.68174586e-04 1.27439819e-04]
+ [9.97516864e-01 2.39058430e-03 9.25520419e-05]
+ [9.82111024e-01 1.52991423e-02 2.58983340e-03]
+ [9.95554140e-01 3.86841458e-03 5.77445653e-04]
+ [5.82539538e-01 4.04618151e-01 1.28423119e-02]
+ [9.99400257e-01 5.74941975e-04 2.48014002e-05]
+ [9.95554140e-01 3.86841458e-03 5.77445653e-04]
+ [9.98914878e-01 8.96677905e-04 1.88443732e-04]
+ [9.62919252e-01 3.43501513e-02 2.73059716e-03]
+ [9.98914878e-01 8.96677905e-04 1.88443732e-04]
+ [9.97648811e-01 2.21431669e-03 1.36872260e-04]
+ [9.90996575e-01 7.00498570e-03 1.99843892e-03]
+ [9.81975239e-01 1.58952704e-02 2.12949088e-03]
+ [7.35446422e-06 1.77559084e-01 8.22433562e-01]
+ [9.23167281e-04 3.88096572e-01 6.10980260e-01]
+ [8.54325744e-06 2.14326679e-01 7.85664777e-01]
+ [1.41122853e-03 8.37924181e-01 1.60664590e-01]
+ [2.77136350e-05 3.97136817e-01 6.02835470e-01]
+ [1.12408322e-02 7.27001293e-01 2.61757874e-01]
+ [3.97715502e-03 4.17055211e-01 5.78967634e-01]
+ [1.55909032e-01 7.89762610e-01 5.43283582e-02]
+ [2.48492678e-05 3.42688372e-01 6.57286778e-01]
+ [1.62829223e-01 7.35148352e-01 1.02022425e-01]
+ [5.40186846e-03 9.32731305e-01 6.18668266e-02]
+ [1.04897412e-02 6.28318316e-01 3.61191942e-01]
+ [1.95111270e-05 6.91326287e-01 3.08654202e-01]
+ [1.18941248e-03 5.61015100e-01 4.37795488e-01]
+ [4.49350600e-02 7.24909307e-01 2.30155633e-01]
+ [4.32188727e-05 2.81027418e-01 7.18929363e-01]
+ [8.65578253e-02 6.84155871e-01 2.29286304e-01]
+ [2.73110611e-03 7.08131093e-01 2.89137801e-01]
+ [4.46109332e-06 6.09845056e-01 3.90150483e-01]
+ [2.83641691e-03 7.94084882e-01 2.03078701e-01]
+ [4.06698419e-02 5.84774164e-01 3.74555994e-01]
+ [5.96868126e-04 5.74605893e-01 4.24797239e-01]
+ [1.66594754e-05 5.26113419e-01 4.73869922e-01]
+ [5.96868126e-04 5.74605893e-01 4.24797239e-01]
+ [1.19617462e-04 4.27565712e-01 5.72314671e-01]
+ [4.89298304e-05 3.30605332e-01 6.69345738e-01]
+ [2.55526074e-06 2.77490491e-01 7.22506953e-01]
+ [2.20084056e-05 2.92087833e-01 7.07890159e-01]
+ [2.51459417e-03 6.03839088e-01 3.93646318e-01]
+ [2.79731120e-03 7.53662247e-01 2.43540442e-01]
+ [2.85072376e-03 8.29302327e-01 1.67846949e-01]
+ [2.85072376e-03 8.29302327e-01 1.67846949e-01]
+ [2.73110611e-03 7.08131093e-01 2.89137801e-01]
+ [6.30264181e-04 6.30485642e-01 3.68884094e-01]
+ [2.83461530e-01 5.80718103e-01 1.35820367e-01]
+ [7.36841125e-02 4.99550083e-01 4.26765804e-01]
+ [4.32188727e-05 2.81027418e-01 7.18929363e-01]
+ [4.20333366e-06 5.52982234e-01 4.47013563e-01]
+ [8.65578253e-02 6.84155871e-01 2.29286304e-01]
+ [5.74775213e-03 8.19230571e-01 1.75021677e-01]
+ [1.15499067e-02 8.06560531e-01 1.81889562e-01]
+ [2.36711387e-03 5.47030553e-01 4.50602333e-01]
+ [1.36070702e-03 7.20094251e-01 2.78545042e-01]
+ [4.36832409e-02 8.87112127e-01 6.92046324e-02]
+ [1.14476425e-02 7.69331762e-01 2.19220596e-01]
+ [4.39491882e-02 6.82320346e-01 2.73730466e-01]
+ [2.23561137e-02 7.08407908e-01 2.69235978e-01]
+ [5.57751407e-04 5.16739282e-01 4.82702966e-01]
+ [8.64183188e-02 8.27482779e-01 8.60989026e-02]
+ [1.12408322e-02 7.27001293e-01 2.61757874e-01]
+ [3.97715502e-03 4.17055211e-01 5.78967634e-01]
+ [2.73110611e-03 7.08131093e-01 2.89137801e-01]
+ [8.47019301e-07 1.67329750e-01 8.32669403e-01]
+ [2.59358471e-04 4.71976072e-01 5.27764569e-01]
+ [1.08003642e-04 3.71523083e-01 6.28368913e-01]
+ [1.30854060e-08 7.55806752e-02 9.24419312e-01]
+ [2.73069921e-01 6.77718798e-01 4.92112804e-02]
+ [8.28896519e-08 1.28945824e-01 8.71054093e-01]
+ [7.46579154e-07 3.50952940e-01 6.49046313e-01]
+ [2.01629072e-05 1.08224099e-01 8.91755738e-01]
+ [4.19659505e-04 3.46533487e-01 6.53046853e-01]
+ [3.05066387e-05 4.54257286e-01 5.45712207e-01]
+ [9.83317858e-06 2.56334791e-01 7.43655376e-01]
+ [1.39034626e-03 7.64554727e-01 2.34054926e-01]
+ [5.47082364e-03 6.94989395e-01 2.99539782e-01]
+ [9.23167281e-04 3.88096572e-01 6.10980260e-01]
+ [1.08003642e-04 3.71523083e-01 6.28368913e-01]
+ [1.12642379e-06 4.24343053e-02 9.57564568e-01]
+ [3.97019620e-10 7.81668821e-02 9.21833117e-01]
+ [1.95111270e-05 6.91326287e-01 3.08654202e-01]
+ [1.67075265e-05 2.05359724e-01 7.94623568e-01]
+ [2.28151847e-02 7.51228346e-01 2.25956469e-01]
+ [1.49635605e-09 7.07206928e-02 9.29279306e-01]
+ [6.58334957e-05 4.99074887e-01 5.00859279e-01]
+ [1.66358288e-04 2.59669202e-01 7.40164439e-01]
+ [1.40572021e-06 1.30938762e-01 8.69059832e-01]
+ [2.80476017e-04 5.30366596e-01 4.69352928e-01]
+ [2.36711387e-03 5.47030553e-01 4.50602333e-01]
+ [6.04306602e-05 4.40874778e-01 5.59064791e-01]
+ [3.70444608e-07 1.43744711e-01 8.56254919e-01]
+ [1.85142095e-08 1.15465040e-01 8.84534941e-01]
+ [2.06397820e-07 2.99983850e-02 9.70001409e-01]
+ [6.04306602e-05 4.40874778e-01 5.59064791e-01]
+ [1.30721229e-04 4.85529134e-01 5.14340145e-01]
+ [1.49872165e-04 6.01051833e-01 3.98798295e-01]
+ [5.63538855e-09 6.39346325e-02 9.36065362e-01]
+ [7.83307151e-03 4.02442183e-01 5.89724745e-01]
+ [4.67562363e-04 4.01188593e-01 5.98343844e-01]
+ [5.00967374e-03 5.89404074e-01 4.05586252e-01]
+ [8.54325744e-06 2.14326679e-01 7.85664777e-01]
+ [4.32188727e-05 2.81027418e-01 7.18929363e-01]
+ [8.54325744e-06 2.14326679e-01 7.85664777e-01]
+ [2.73110611e-03 7.08131093e-01 2.89137801e-01]
+ [3.77550816e-05 2.36259775e-01 7.63702470e-01]
+ [1.66358288e-04 2.59669202e-01 7.40164439e-01]
+ [2.20084056e-05 2.92087833e-01 7.07890159e-01]
+ [1.66594754e-05 5.26113419e-01 4.73869922e-01]
+ [1.08003642e-04 3.71523083e-01 6.28368913e-01]
+ [1.68986440e-02 4.42012468e-01 5.41088888e-01]
+ [1.04897412e-02 6.28318316e-01 3.61191942e-01]]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_60_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+\end{tcolorbox}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}
