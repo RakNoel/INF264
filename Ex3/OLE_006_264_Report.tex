@@ -1,0 +1,170 @@
+%	INF219
+%	Oskar L. F. Lerivåg
+%	INF264 Exersice 2
+
+\documentclass[a4paper, 12pt]{article}
+
+%Bookmarks
+\usepackage[colorlinks=true,urlcolor=cyan,linkcolor=black,citecolor=red,bookmarksopen=true]{hyperref}
+\usepackage{bookmark}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\usetikzlibrary{arrows}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{epigraph}
+\usepackage{pgfplots}
+
+%Subfile
+\usepackage{subfiles}
+
+   \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+    \usepackage{iftex}
+    \ifPDFTeX
+    	\usepackage[T1]{fontenc}
+    	\usepackage{mathpazo}
+    \else
+    	\usepackage{fontspec}
+    \fi
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % Maintain compatibility with old templates. Remove in nbconvert 6.0
+    \let\Oldincludegraphics\includegraphics
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionFormat{nocaption}{}
+    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range
+    \makeatletter % fix for grffile with XeLaTeX
+    \def\Gread@@xetex#1{%
+      \IfFileExists{"\Gin@base".bb}%
+      {\Gread@eps{\Gin@base.bb}}%
+      {\Gread@@xetex@aux#1}%
+    }
+    \makeatother
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{mathrsfs}
+    
+        \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+
+%Images%
+\usepackage{graphicx}
+\usepackage{float}
+
+%Margins
+\usepackage{geometry}
+\geometry{a4paper, margin=3cm}
+
+%Citations
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\mysection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
+\newcommand{\mysubsection}[1]{\subsection*{#1} \addcontentsline{toc}{subsection}{#1}}
+\newcommand{\mysubsubsection}[1]{\subsubsection*{#1} \addcontentsline{toc}{subsubsection}{#1}}
+
+\newcommand{\myFigure}[3]{\begin{figure}[h!]\centering\includegraphics[scale=#1]{figures/#2}\caption{#3}\end{figure}}
+
+\newcommand{\mycitation}[1]{[\citet{#1}]}
+
+\begin{document}
+
+    % % % % % % % % % % % % % % % % %
+    %
+    %	FRONT PAGE
+    %
+    \input{./uib_frontpage.tex}
+
+    % % % % % % % % % % % % % % % % %
+    %
+    %	TABLE OF CONTENTS
+    %
+    \pdfbookmark{\contentsname}{toc}
+    \tableofcontents
+    \newpage
+    
+	\mysection{Entropy and decision trees}
+	\mysubsection{Entropy}
+	\begin{enumerate}
+	\item
+	To plot this function we need to set the logical limits for the probability as the sum of $X$ should be equal to $1$. This means that we should only plot with $(0 \leq p \leq 1)$.\\
+	\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[domain=0:10,
+		samples=100,
+		enlarge x limits=false,
+		grid=both,
+		no markers]
+		\addplot [domain=0:1,samples=100,color=blue] (\x,{\x*log2(1/\x) + ((1-\x)*log2(1/(1-\x)))} );
+	\end{axis}
+	\end{tikzpicture}
+	\end{center}
+	
+	Now from this graph we can see that the entropy is at its highest at $P = 0.5$, meaning when there is equal probability distribution. This means that the less we can say of the outcome the more entropy we have. 
+	
+	\item
+	Heh...
+	\end{enumerate}
+	
+	\mysubsection{Relation between entropy and information}
+	\mysubsubsection{Arresting a criminal}
+	
+
+%p*log_2(1/p) + ((1-p)*log_2(1/(1-p)))
+
+	
+	\newpage
+	\mysection{Code}
+	%\subfile{./LinearModels_ex2.tex}
+		
+	
+    % % % % % % % % % % % % % % % % %
+    %
+    %	ADD REFERANCES
+    %
+    %\bibliography{citation-db}
+    %\addcontentsline{toc}{section}{References}
+
+\end{document}
