@@ -123,6 +123,40 @@
     \pdfbookmark{\contentsname}{toc}
     \tableofcontents
     \newpage
+    
+    \mysection{Running the program}
+    The program is written in Python 3, using the Jupyter notebook implementation. To execute the code you will need to have python3 installed, and from PIP:
+    \begin{itemize}
+    	\item JuPyter
+    	\item Pandas
+    	\item Numpy
+    	\item sklearn
+    \end{itemize}
+    
+    \mysection{Implementing the D3 algorithm}
+    \mysubsection{About the task}
+    Implementing the entire tree algorithm from scratch was a hard but immersive experience. Digging into the deepest part of development-solutions and creating a prediction algorithm was cool. Unfortunately most of the examples represented was from discrete decision-trees, and therefore the development towards that became the natural way. It did not become clear until much later that we should be able to handle continuous values as well.
+    \\\\
+    Due to this, I found a discrete example from the internet, and preceded to implement a solution which would solve that. I believe I was mostly successful in doing so. It is able to learn and predict, but trying to use the abalone dataset the inadequacy became obvious. Therefore i implemented a continuous solution in the genie calculations, but I was unable to implement this into the actual tree.
+    
+    \mysubsection{On the topic of language}
+    Using python was a bad move, many many hours were wasted in simpler things like trying to loop trough the tables and extracting the correct values. This has resulted in a much lower result than expected. Still, using any other language might not have proven much better as this is the course-language and most machine-learning-apps apparently run python, giving much more internet resources to read.
+    
+    \mysubsection{The issue of continuous values}
+    The solution to the continuous issue is simply to create a discrete "question" to determine from the value. This can be done by using an average (or better separators) of the numbers, creating a true false question of e.g. $x < 6.54$. Implementing this should not be too difficult but time is a limited resource.
+    
+    \mysubsection{reduced-error pruning}
+    Pruning a decision-tree is rather important on larger datasets, as they do really tend to over fit. This simply means to replace leaf-nodes with the most used result, but my implementation does not store the probabilities which requires some re-work to implement this.
+    
+    \mysection{Evaluating}
+    Evaluation becomes difficult as not everything is successfully implemented. Still we can test it's training accuracy (which better be 1), and then a test accuracy. On a smaller discrete dataset like the tennis dataset added, we can see that the performance is ok. Even though there is a lot of unnecessary calculations. The accuracy of that test is also decent, but could be much better. Doing any larger datasets shows a clear increase in complexity. We should also note that since there is no pruning, larger datasets should over-fit.
+    \\\\
+    When it comes to testing the different parameters, one would try looping over all of them, testing which one holds the better accuracy and performance. It looks as though sklearns $DecisionTreeClassifier$ uses Gini, but it it's faster than entropy I do not know (but i guess it depends on the dataset).
+    \\\\
+    Pruning we know that should most likely be done if the dataset is large, and pruning is not that costly since we were to use reduced-error pruning. But again it's hard to say anything without trying them all out.
+    
+    \mysection{Comparing}
+    As the application was not completed I was not able to compare against the sklearns $DecisionTreeClassifier$. But I did implement it and make it predict. It does not yield any good results, but the performance is impressive. Neither does the $DecitionTreeClassifier$ support discrete values, so it's difficult to test on the tennis set as well.
 	
 	%\subfile{./Inf264-Assignment_4.tex}
 		
