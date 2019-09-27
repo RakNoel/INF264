@@ -21,8 +21,7 @@
 
 %Subfile
 \usepackage{subfiles}
-
-   \usepackage[breakable]{tcolorbox}
+    \usepackage[breakable]{tcolorbox}
     \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
     
     \usepackage{iftex}
@@ -124,107 +123,8 @@
     \pdfbookmark{\contentsname}{toc}
     \tableofcontents
     \newpage
-    
-	\mysection{Entropy and decision trees}
-	\mysubsection{Entropy}
-	\begin{enumerate}
-	\item
-	To plot this function we need to set the logical limits for the probability as the sum of $X$ should be equal to $1$. This means that we should only plot with $(0 \leq p \leq 1)$.\\
-	\begin{center}
-	\begin{tikzpicture}
-	\begin{axis}[domain=0:10,
-		samples=100,
-		enlarge x limits=false,
-		grid=both,
-		no markers]
-		\addplot [domain=0:1,samples=100,color=blue] (\x,{\x*log2(1/\x) + ((1-\x)*log2(1/(1-\x)))} );
-	\end{axis}
-	\end{tikzpicture}
-	\end{center}
 	
-	Now from this graph we can see that the entropy is at its highest at $P = 0.5$, meaning when there is equal probability distribution. This means that the less we can say of the outcome the more entropy we have. 
-	
-	\item
-	Heh...
-	\end{enumerate}
-	
-	\mysubsection{Relation between entropy and information}
-	\mysubsubsection{Arresting a criminal}
-	\begin{enumerate}
-	\item
-	For officer A, each room is equal likely, hence he is looking at 
-	$\begin{cases}
-	x_0 = \frac{1}{80} \\
-	x_1 = \frac{1}{80} \\
-	\vdots \\
-	x_4 = \frac{1}{80}
-	\end{cases}$
-	giving $- (1/80 * log_2(1/80))*5 \approx 0.4$
-	
-	\item
-	For officer B, he knows the room so he is only left with $p=\frac{1}{80}$ giving an entropy of $- (1/80 * log_2(1/80)) \approx 0.08$
-	
-	\item
-	For officer C, he knows both the room and which subgroup which contains the criminal. He therefore has an even smaller samplesize giving only
-	$- (1/30 * log_2(1/30)) \approx 0.16$
-	
-	\item
-	The entropy should get lower the more information you have, as we have lower probability and less chaos.
-	\end{enumerate}
-	
-	\newpage
-	
-	\mysubsubsection{Guessing cards}
-	\begin{enumerate}
-	\item
-	The entropy of the entire X is given a fair draw $-((1/52)*log_2(1/52))*52 \approx 5.7$ while the total probability distribution summed to 1.
-	
-	\item
-	Since only four cards in the entire pile is an ace we have 
-	\\\\
-	$P(E_y) = \frac{4}{52} = \frac{1}{13} \approx 0.08 \approx 8\%$
-	\\\\
-	And the Prob. distr. is $
-		  \frac{\binom{r}{k}\binom{n-r}{m-k}}{\binom{n}{m}} = \frac{\binom{4}{y}\binom{48}{1-y}}{52}
-	$
-	
-	\item
-	Prob distr. true $= \frac{\binom{4}{1}\binom{48}{0}}{52} = \frac{4}{52}$ \\
-	entopy true $= \displaystyle\sum_{i=0}^{52-1} \frac{4}{52} * log_2(\frac{52}{4}) \approx 14.8$
-	\\\\
-	Prob distr. false $= \frac{\binom{4}{0}\binom{48}{1}}{52} = \frac{48}{52}$ \\
-	entopy false $= \displaystyle\sum_{i=0}^{52-1} \frac{48}{52} * log_2(\frac{52}{48}) \approx 5.5$
-	
-	\item
-	Now given the numbers above we are left with
-	\[
-		\frac{4}{52} * 14.8 + \frac{48}{52} * 5.5 \approx 6.22
-	\]
-	
-	\item
-	The information from Y should affect X in such a way that it lowers the entropy significantly. The more information one holds, the lower is the uncertainty and thereby also the entropy. But apparently I'm really bad at math
-	
-	\end{enumerate}
-	
-	\mysubsection{Decision trees}
-	\[
-	X \rightarrow \begin{bmatrix}
- 		 & A & B\\ \hline
-		1 \quad \vline & 1 & 2 \\
-		0 \quad \vline & 4 & 2
-		\end{bmatrix} \quad \quad Y \rightarrow \begin{bmatrix}
- 		 & A & B \\ \hline
-		1 \quad \vline & 3 & 2 \\
-		0 \quad \vline & 2 & 3
-		\end{bmatrix} \quad \quad Z \rightarrow \begin{bmatrix}
- 		 & A & B \\ \hline
-		1 \quad \vline & 3 & 2 \\
-		0 \quad \vline & 2 & 3
-		\end{bmatrix}
-	\]
-	
-	
-	\subfile{./Ex3_template_section2.tex}
+	%\subfile{./Inf264-Assignment_4.tex}
 		
 	
     % % % % % % % % % % % % % % % % %
